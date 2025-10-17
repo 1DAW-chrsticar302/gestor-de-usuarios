@@ -7,10 +7,41 @@ error_reporting(E_ALL);
 
 include_once('./lib/funciones.php');
 
+function dump($var){
+    echo '<pre>'.print_r($var,1).'</pre>';
+}
 
 /***** Lógica de negocio ******/
 
+// function writeCSV($archivoCSV,$info) {
+//     $out = fopen('data/users.csv', 'w');
+//     fputcsv($out, array($info['user'],$info['email'],$info['rol'],$date));
+//     fclose($out);
+// }
 
+function leerArchivoCSV($rutaArchivoCSV) {
+    $tablero = [];
+
+    if (($puntero = fopen($rutaArchivoCSV, "r")) !== FALSE) {
+        while (($datosFila = fgetcsv($puntero)) !== FALSE) {
+            $tablero[] = $datosFila;
+        }
+        fclose($puntero);
+    }
+    return $tablero;
+}
+
+function writeCSV($preinfo) {
+    $out = fopen('data/users.csv', 'w');
+    foreach($preinfo as $clave => $array) {
+        fputcsv($out, $array);
+    }
+    
+    if(isset($_GET) && $_GET!=null) {
+        fputcsv($out, array($_GET['user'],$_GET['email'],$_GET['rol'],date('d-m-y')));
+    }
+    fclose($out);
+}
 
 //*****Lógica de presentación****MARKUPS*****
 $loginMarkup = getLoginMarkup();
@@ -18,25 +49,55 @@ $loginMarkup = getLoginMarkup();
 function getLoginMarkup() {
     return $output = '<form action="" method="get">
     <div class="login-container">
-      <h1>LOGIN</h1>
+      <h1>USER</h1>
       
       <div class="input-group">
         <label for="user">USUARIO</label>
-        <input type="user" id="user" placeholder="Usuario">
+        <input type="user" name="user" id="user" placeholder="Usuario">
       </div>
   
       <div class="input-group">
           <label for="email">EMAIL</label>
-          <input type="email" id="email" placeholder="your@email.com">
+          <input type="email" name="email" id="email" placeholder="your@email.com">
       </div>
       
       <div class="input-group">
           <label for="password">ROL</label>
-          <input type="password" id="password" placeholder="ROL">
+          <input type="rol" name="rol" id="password" placeholder="ROL">
       </div>
       
-      <button type="submit">SIGN IN</button>
+      <button type="submit">CREATE</button>
   </form>';
 }
 
 ?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CREATE USER</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+  <?php echo $loginMarkup ?>
+  <?php  writeCSV(leerArchivoCSV('data/users.csv'))?>
+  <br><br><br><br>
+  <a href="index.php">VOLVER ATRÁS</a>
+    
+    <!-- <div class="divider">OR</div> -->
+    
+    <!-- <div class="social-login">
+        <div class="social-btn">G</div>
+        <div class="social-btn">F</div>
+        <div class="social-btn">X</div>
+    </div> -->
+    
+    <!-- <div class="footer">
+        Don't have an account? <a href="#">Sign up</a>
+    </div>
+  </div> -->
+
+</body>
+</html>
