@@ -6,13 +6,7 @@ function dump($var){
     echo '<pre>'.print_r($var,1).'</pre>';
 }
 
-function leerImput() {
-    
-}
 
-function getloginMarkup($loginData) {
-    
-}
 
 function leerArchivoCSV($rutaArchivoCSV) {
     $tablero = [];
