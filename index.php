@@ -16,7 +16,7 @@ function mostrarUsuarios($usuariosList) {
   $output = '';
   
   foreach($usuariosList as $userId => $user) {
-    $output .= '<div class="user">'.$user[0].' | '.$user[1].' | '.$user[2].' | '.$user[3].'</div>';
+    $output .= '<div class="user">'.$userId.' | '.$user[0].' | '.$user[2].'<a href="">VER</a></div>';
   }
 
   return $output;

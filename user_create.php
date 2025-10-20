@@ -63,7 +63,7 @@ function getLoginMarkup() {
       
       <div class="input-group">
           <label for="password">ROL</label>
-          <input type="rol" name="rol" id="password" placeholder="ROL">
+          <input type="rol" name="rol" id="password" placeholder="ADMIN,USER OR MODER">
       </div>
       
       <button type="submit">CREATE</button>
