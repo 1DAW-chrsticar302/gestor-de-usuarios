@@ -87,7 +87,7 @@ function getLoginMarkup() {
   <?php echo $loginMarkup ?>
   <?php  writeCSV(leerArchivoCSV('data/users.csv'))?>
   <br><br><br><br>
-  <a href="index.php">VOLVER ATRÁS</a>
+  <a href="user_index.php">VOLVER ATRÁS</a>
     
 
 </body>

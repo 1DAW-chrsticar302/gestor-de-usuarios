@@ -1,4 +1,9 @@
 <?php
+function dump($var){
+    $des = base64_decode(unserialize($var));
+    echo '<pre>'.print_r($des,1).'</pre>';
+}
+
 
 function leerArchivoCSV($rutaArchivoCSV) {
   $tablero = [];
@@ -16,7 +21,10 @@ function mostrarUsuarios($usuariosList) {
   $output = '';
   
   foreach($usuariosList as $userId => $user) {
-    $output .= '<div class="user">'.$userId.' | '.$user[0].' | '.$user[2].'<a href="">VER</a></div>';
+    $output .= '<div class="user">'.$userId.' | '.$user[0].' | '.$user[2].'
+    <a href="user_info.php?user='.base64_encode(serialize($user)).'">VER</a>
+    <a href="user_edit.php?user='.base64_encode(serialize($user)).'">EDITAR</a>
+    <a href="user_delete.php?user='.base64_encode(serialize($user)).'">ELIMINAR</a></div>';
   }
 
   return $output;
@@ -43,6 +51,11 @@ function mostrarUsuarios($usuariosList) {
       box-shadow: grey;
       display:grid;
       grid-template-rows: repeat(12, 1fr);
+    }
+    
+    a{
+      float:right;
+      margin-left:5%;
     }
 
     .user{
