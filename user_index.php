@@ -23,8 +23,8 @@ function mostrarUsuarios($usuariosList) {
   foreach($usuariosList as $userId => $user) {
     $output .= '<div class="user">'.$userId.' | '.$user[0].' | '.$user[2].'
     <a href="user_info.php?user='.base64_encode(serialize($user)).'">VER</a>
-    <a href="user_edit.php?user='.base64_encode(serialize($user)).'">EDITAR</a>
-    <a href="user_delete.php?user='.base64_encode(serialize($user)).'">ELIMINAR</a></div>';
+    <a href="user_edit.php?userId='.$userId.'&&user='.base64_encode(serialize($user)).'">EDITAR</a>
+    <a href="user_delete.php?userId='.$userId.'&&user='.base64_encode(serialize($user)).'">ELIMINAR</a></div>';
   }
 
   return $output;
