@@ -46,11 +46,14 @@ function mostrarUsuarios($usuariosList) {
     .content {
       margin:10%;
       width: 90%;
-      height:600px;
       border: solid 4px grey;
       box-shadow: grey;
       display:grid;
       grid-template-rows: repeat(12, 1fr);
+    }
+
+    .content div {
+      padding:2%;
     }
     
     a{
@@ -74,10 +77,10 @@ function mostrarUsuarios($usuariosList) {
 
 </head>
 <body>
+  <a href="user_create.php">Crear User</a>
   <div class="content">
     <?php echo mostrarUsuarios(leerArchivoCSV('data/users.csv')) ?>
   </div>
- <a href="user_create.php">Crear User</a>
 
 </body>
 </html>

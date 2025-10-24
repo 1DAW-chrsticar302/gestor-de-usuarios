@@ -13,12 +13,6 @@ function dump($var){
 
 /***** Lógica de negocio ******/
 
-// function writeCSV($archivoCSV,$info) {
-//     $out = fopen('data/users.csv', 'w');
-//     fputcsv($out, array($info['user'],$info['email'],$info['rol'],$date));
-//     fclose($out);
-// }
-
 function leerArchivoCSV($rutaArchivoCSV) {
     $tablero = [];
 
