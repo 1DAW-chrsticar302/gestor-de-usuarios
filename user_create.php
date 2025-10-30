@@ -32,7 +32,7 @@ function writeCSV($preinfo) {
     }
     
     if(isset($_GET) && $_GET!=null && $_GET['user']!=null  && $_GET['email']!=null  && $_GET['rol']!=null ) {
-        fputcsv($out, array($_GET['user'],$_GET['email'],$_GET['rol'],date('d-m-y')));
+        fputcsv($out, array($_GET['user'],$_GET['email'],$_GET['rol'],date('Y-m-d')));
     }
     fclose($out);
 }
