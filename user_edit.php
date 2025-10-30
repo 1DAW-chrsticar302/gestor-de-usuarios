@@ -77,6 +77,7 @@
         return $tablero;
     }
 
+    
     function writeCSV($preinfo) {
         if(isset($_GET['name']) && isset($_GET['email']) && isset($_GET['rol']) && isset($_GET['userGuardado'])) {
             $userPrevio = unserialize(base64_decode($_GET['userGuardado']));
