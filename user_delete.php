@@ -34,22 +34,32 @@ function getConfirmacionMarkup() {
         </div>';
     }
     else {
-        $output = '
-        <div class="content">
-        <div class="frase">¿ Seguro que quieres eliminar este usuario ?</div>
-        <div class="botones">
-            <form action="" method="get">
-                <input type="hidden" name="userId" value="'.$_GET['userId'].'">
-                <input type="hidden" name="confirmacion" value="true">
-                <button style="margin-left=5%" type="submit">SI</a>
-            </form>
+        if(isset($_GET['rechazo'])) {
+            $output = '<div class="content">
+            <div class="frase">OPERACIÓN CANCELADA</div>
+            <div class="botones">
+            <a href="user_index.php">VOLVER AL INDEX</a>
+            </div>
+            </div>';
+        }else{
+            $output = '
+            <div class="content">
+            <div class="frase">¿ Seguro que quieres eliminar este usuario ?</div>
+            <div class="botones">
+                <form action="" method="get">
+                    <input type="hidden" name="userId" value="'.$_GET['userId'].'">
+                    <input type="hidden" name="confirmacion" value="true">
+                    <button style="margin-left=5%" type="submit">SI</a>
+                </form>
 
-            <form action="" method="get">
-                <input type="hidden" name="userId" value="'.$_GET['userId'].'">
-                <button type="submit">NO</a>
-            </form>
-        </div>
-        </div>';
+                <form action="" method="get">
+                    <input type="hidden" name="userId" value="'.$_GET['userId'].'">
+                    <input type="hidden" name="rechazo" value="true">
+                    <button type="submit">NO</a>
+                </form>
+            </div>
+            </div>';
+        }
 
     }
     return $output;
