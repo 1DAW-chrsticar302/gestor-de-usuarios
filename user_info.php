@@ -5,7 +5,7 @@ function userMarkup($user_encoded) {
     $output='';
 
     $output .='<div class="user">
-        <div class="image"><img src="src/img/user.png"></div>
+        <div class="image"><img src="imagenes/'.$user[0].'_'.$user[2].'_'.$user[4].'"></div>
         <div class="name"><p>'.$user[0].'</p></div>
         <div class="email"><p>'.$user[1].'</p></div>
         <div class="rol"><p>Rol '.$user[2].'</p></div>
@@ -35,10 +35,10 @@ function dump($var){
             color: white;
         }
         .user{
-            margin: 5%;
+            margin: 3%;
             height: fit-content;
             border: solid 4px orange;
-            box-shadow: grey;
+            box-shadow: 3px 3px 6px orange, -3px -3px 6px orange;
             border-radius:5%;
         }
         .name{
@@ -48,13 +48,13 @@ function dump($var){
             background-color: rgba(50, 50, 200, 0.5);
             border: solid 4px white;
             box-shadow: grey;
-            width: 30%;
-            margin:5%;
+            width: 300px;
+            margin:2%;
             border-radius:5%;
         }
 
         .image img{
-            width: 50%;
+            width: 100%;
         }
 
         button {

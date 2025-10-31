@@ -105,7 +105,6 @@ function mostrarUsuarios($usuariosList) {
     padding: 0;
     background-image: url("./src/464.jpg");
     background-size: 209px;
-    background-repeat: none;
     overflow: hidden;
     display:grid;
     grid-template-columns: repeat(6,1fr);

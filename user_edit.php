@@ -21,6 +21,11 @@
             $user = unserialize(base64_decode($_GET['user']));
 
             $output.='<div class="input-group">
+            <label for="user">EDITAR IMÁGEN</label>
+            <input type="file" name="imagen">
+            </div>
+            
+            <div class="input-group">
             <label for="user">USUARIO</label>
             <input type="user" name="name" id="user" placeholder="'.$user[0].'">
             </div>
@@ -41,6 +46,11 @@
         }else {
 
             $output.='<div class="input-group">
+            <label for="user">EDITAR IMÁGEN</label>
+            <input type="file" name="imagen">
+            </div>
+            
+            <div class="input-group">
             <label for="user">USUARIO</label>
             <input type="user" name="name" id="user" placeholder="'.$_GET['name'].'">
             </div>
@@ -79,12 +89,12 @@
 
     
     function writeCSV($preinfo) {
-        if(isset($_GET['name']) && isset($_GET['email']) && isset($_GET['rol']) && isset($_GET['userGuardado'])) {
+        if(isset($_GET['name']) && isset($_GET['email']) && isset($_GET['rol']) && isset($_GET['imagen']) && isset($_GET['userGuardado'])) {
             $userPrevio = unserialize(base64_decode($_GET['userGuardado']));
             $out = fopen('data/users.csv', 'w');
         foreach($preinfo as $clave => $array) {
             if($clave == $_GET['userId']) {
-                fputcsv($out, array($_GET['name'],$_GET['email'],$_GET['rol'],$userPrevio[3]));
+                fputcsv($out, array($_GET['name'],$_GET['email'],$_GET['rol'],$userPrevio[3],$_GET['imagen']));
             }
             else {
                 fputcsv($out, $array);
