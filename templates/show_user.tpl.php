@@ -6,7 +6,7 @@
     
     <!-- Minified version -->
     <link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css">
-    <title>Lista de usuarios</title>
+    <title>Ususario</title>
 </head>
 <body>
     <?php if(isset($usuario)): ?>

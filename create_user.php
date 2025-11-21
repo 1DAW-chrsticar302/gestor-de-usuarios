@@ -4,7 +4,17 @@ include_once('./libraries/functions.php');
 
 //Inicialización
 boot();
+$servername = 'localhost';
+$dbname = 'usuariosdb';
+$usuario =  'usuario';
+$passwd = 'passwd';
 
+try{
+    $db = new PDO('mysql:host='.$servername.';dbname='.$dbname,$usuario,$passwd);
+    // echo "Conected";
+}catch (PDOException $e){
+    echo "No se ha podido conectar a la base de datos";
+}
 //Lógica de negocio
 $mensaje = '';
 
