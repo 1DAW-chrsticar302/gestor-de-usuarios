@@ -30,19 +30,21 @@ if(isset($_POST['crear'])){
     if(!empty($userData)){
         
 
-        $id = intval(getDataFromCSV('./data/last_id.csv')[0]['id']);
-        $id+=1;       
-        array_unshift($userData, $id);
-        array_push($userData, date('d/M/Y'));
+        // $id = intval(getDataFromCSV('./data/last_id.csv')[0]['id']);
+        // $id+=1;
+
+        $stmn = $db -> prepare("INSERT INTO usuarios (nombre, email, rol) VALUES ('".$userData['nombre']."', '".$userData['email']."', '".$userData['rol']."');");
+        $stmn -> execute();
         
-        putDataInCSV([$userData], './data/users.csv');
+        // putDataInCSV([$userData], './data/users.csv');
 
         //TODO: Crear funciones que permitan gestionar esto con una sola llamada
-        clearFileContent('./data/last_id.csv');
-        putDataInCSV([['id'],[$id]], './data/last_id.csv');
         
 
         $mensaje= 'Usuario creado';
+        header("Location: index_user.php");
+        exit();
+        
     }
     
 }

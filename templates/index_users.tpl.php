@@ -15,7 +15,9 @@
             <th>Nombre</th>
             <th>Email</th>
             <th>Rol</th>
-            <th>Ver</th>
+            <!-- <th>VER</th>
+            <th>EDITAR</th>
+            <th>ELIMINAR</th> -->
         </tr>
         <?php foreach($usuarios as  $usuario): ?>  
         <tr>
@@ -23,6 +25,8 @@
             <td><?php echo htmlspecialchars($usuario['email']); ?></td>
             <td><?php echo htmlspecialchars(ucfirst($usuario['rol'])); ?></td>
             <td><?php echo '<form action="./show_user.php" method="get"><button>INFO</button><input type="hidden" name="id" value="'.htmlspecialchars($usuario['id']).'"></form>'; ?></td>
+            <td><?php echo '<form action="./edit_user.php" method="get"><button>EDIT</button><input type="hidden" name="id" value="'.htmlspecialchars($usuario['id']).'"></form>'; ?></td>
+            <td><?php echo '<form action="./delete_user.php" method="get"><button>DEL</button><input type="hidden" name="id" value="'.htmlspecialchars($usuario['id']).'"></form>'; ?></td>
         </tr>
         <?php endforeach; ?>   
     </table>
