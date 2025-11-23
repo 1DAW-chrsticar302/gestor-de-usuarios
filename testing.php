@@ -4,20 +4,14 @@
 include_once('./libraries/functions.php');
 
 boot();
+$visitas = 0;
 
-
-//$conexion = new PDO('mysql:host=localhost;dbname=crud_mysql', 'crud_mysql', 'crud_mysql');
-
-Class Persona{
-    public $nombre;
-
-    function __construct($nombre){
-        $this->nombre = $nombre;
-    }
+if (!isset($_COOKIE['visitas'])) {    
+    setcookie('visitas',$visitas);
+}else{
+    $visitas = $_COOKIE['visitas'];
+    setcookie('visitas',$visitas+1);
 }
-
-$persona = new Persona('Pedro');
-dump($persona);
-dumpObjectStructure($persona);
+echo 'Hay '. $_COOKIE['visitas'] . ' visitas en esta página';
 
 ?>  
