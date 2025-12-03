@@ -30,7 +30,7 @@ if(isset($_POST['signIn'])){
             'password' => $_POST['password']
         );
 
-        header('Location: index_user.php');
+        header('Location: validate.php');
     }else{
         header('Location: login.php?campos=true');
     }

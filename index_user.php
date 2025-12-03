@@ -28,12 +28,14 @@ $usuarios->execute();
 //Lógica de presentación
 //Presenta el html a partir de los datos en el CSV
 
-if(isset($_SESSION)) {
+if(isset($_SESSION['id']) ) {
     
     include_once('./templates/index_users_guests.tpl.php');
 
 }else {
-
+    
+    echo 'No se ha encontrado al usuario';
+    
 }
 
 
