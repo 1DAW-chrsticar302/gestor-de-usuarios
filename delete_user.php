@@ -20,7 +20,7 @@ $id = filter_input(INPUT_GET, 'id', FILTER_VALIDATE_INT);
 
 if (isset($_POST['delete'])) {
 
-    $stmn = $db -> prepare('DELETE FROM usuarios WHERE id=' . $id);
+    $stmn = $db -> prepare('DELETE FROM users WHERE id=' . $id);
     $stmn -> execute();
     header("Location: index_user.php");
     exit();

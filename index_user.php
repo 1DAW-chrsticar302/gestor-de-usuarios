@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 include_once('./libraries/functions.php');
 
 //Inicialización
@@ -21,13 +21,20 @@ try{
 //Lee CSV
 
 
-$usuarios = $db -> prepare('SELECT * FROM usuarios');
+$usuarios = $db -> prepare('SELECT * FROM users');
 $usuarios->execute();
 
 //$usuarios = getDataFromCSV('./data/users.csv', 'id');
 //Lógica de presentación
 //Presenta el html a partir de los datos en el CSV
-include_once('./templates/index_users.tpl.php');
+
+if(isset($_SESSION)) {
+    
+    include_once('./templates/index_users_guests.tpl.php');
+
+}else {
+
+}
 
 
 

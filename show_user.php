@@ -27,7 +27,7 @@ if( $id !== false){
     //     print_r($usuario);
     // }
 
-    $patata = $db-> prepare('SELECT * FROM usuarios WHERE id = ' . $id);
+    $patata = $db-> prepare('SELECT * FROM users WHERE id = ' . $id);
     $patata -> execute();
     
 

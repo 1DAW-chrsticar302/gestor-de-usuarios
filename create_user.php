@@ -33,7 +33,7 @@ if(isset($_POST['crear'])){
         // $id = intval(getDataFromCSV('./data/last_id.csv')[0]['id']);
         // $id+=1;
 
-        $stmn = $db -> prepare("INSERT INTO usuarios (nombre, email, rol) VALUES ('".$userData['nombre']."', '".$userData['email']."', '".$userData['rol']."');");
+        $stmn = $db -> prepare("INSERT INTO users (nombre, email, rol) VALUES ('".$userData['nombre']."', '".$userData['email']."', '".$userData['rol']."');");
         $stmn -> execute();
         
         // putDataInCSV([$userData], './data/users.csv');

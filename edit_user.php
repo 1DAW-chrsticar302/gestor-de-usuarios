@@ -27,7 +27,7 @@ if (!$id) {
 
 // Obtener datos actuales del usuario
 try {
-    $stmt = $db->prepare("SELECT * FROM usuarios WHERE id = :id");
+    $stmt = $db->prepare("SELECT * FROM users WHERE id = :id");
     $stmt->bindValue(':id', $id, PDO::PARAM_INT);
     $stmt->execute();
     $usuario = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -76,7 +76,7 @@ if (isset($_POST['actualizar'])) {
         } else {
             try {
                 $update = $db->prepare("
-                    UPDATE usuarios
+                    UPDATE users
                     SET nombre = :nombre,
                         email  = :email,
                         rol    = :rol
