@@ -21,6 +21,12 @@ if(isset($_GET['campos'])) {
     $error = '';
 }
 
+if(isset($_GET['logout'])) {
+    $logout = 'LOUG OUT EXITOSO';
+}else{
+    $logout = '';
+}
+
 
 if(isset($_POST['signIn'])){
     if(isset($_POST['email']) && isset($_POST['password']) && isset($_POST['nombre']) && $_POST['password']!=null && $_POST['email']!=null && $_POST['nombre']!=null) {
@@ -95,12 +101,18 @@ if(isset($_POST['signIn'])){
                 <input type="password" name="password">
                 <br>
                 <input type="submit" name="signIn" class="submit" value="Sign In">
-                <p style="text-align: center; margin-top: 7%;"><?php echo $error ?></p>
+                <p style="text-align: center; margin-top: 7%;"><?php echo $error ?><?php echo $logout ?></p>
             </form>
         </div>
     </div>
 
     
+    <script>
+        let f1 = document.getElementById('loginForm');
+        f1.forEach(element => {
+            element.textContent = '';
+        });
+    </script>
 
     <script src="../../shared/js/form-utils.js"></script>
     <script src="script.js"></script>

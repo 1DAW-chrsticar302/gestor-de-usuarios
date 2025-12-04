@@ -24,6 +24,7 @@ if(isset($_POST['crear'])){
     $userData = filter_input_array(INPUT_POST,[
         'nombre' => FILTER_DEFAULT,
         'email' => FILTER_VALIDATE_EMAIL,
+        'password' => FILTER_DEFAULT,
         'rol' => FILTER_DEFAULT
 
     ]);
@@ -32,8 +33,10 @@ if(isset($_POST['crear'])){
 
         // $id = intval(getDataFromCSV('./data/last_id.csv')[0]['id']);
         // $id+=1;
+        $hashed_passwd = password_hash($userData['password'],PASSWORD_DEFAULT);
+        $userData['password'] = $hashed_passwd;
 
-        $stmn = $db -> prepare("INSERT INTO users (nombre, email, rol) VALUES ('".$userData['nombre']."', '".$userData['email']."', '".$userData['rol']."');");
+        $stmn = $db -> prepare("INSERT INTO users (nombre, email, rol, password) VALUES ('".$userData['nombre']."', '".$userData['email']."', '".$userData['rol']."', '".$userData['password']."');");
         $stmn -> execute();
         
         // putDataInCSV([$userData], './data/users.csv');

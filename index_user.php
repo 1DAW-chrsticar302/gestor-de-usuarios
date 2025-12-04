@@ -28,10 +28,14 @@ $usuarios->execute();
 //Lógica de presentación
 //Presenta el html a partir de los datos en el CSV
 
-if($_SESSION['rol'] == 'ADMIN' || $_SESSION['rol'] == 'EDITOR') {
-    include_once('./templates/index_users.tpl.php');
-}else{
-    include_once('./templates/index_users_guests.tpl.php');
+if(isset($_SESSION)) {
+    if($_SESSION['rol'] == 'ADMIN' || $_SESSION['rol'] == 'EDITOR') {
+        include_once('./templates/index_users.tpl.php');
+    }else{
+        include_once('./templates/index_users_guests.tpl.php');
+    }
+}else {
+    echo 'ERROR DE SESIÓN. INICIE SESIÓN PARA ENTRAR';
 }
 
 

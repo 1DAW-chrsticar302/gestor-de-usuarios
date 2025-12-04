@@ -24,9 +24,9 @@
 
         <label for="rol">Rol:</label>
         <select id="rol" name="rol">
-            <option value="admin"  <?php echo (($usuario['rol'] ?? '')==='ADMIN') ? 'selected' : ''; ?>>Administrador</option>
-            <option value="guest"  <?php echo (($usuario['rol'] ?? '')==='GUEST') ? 'selected' : ''; ?>>Invitado</option>
-            <option value="editor" <?php echo (($usuario['rol'] ?? '')==='EDITOR') ? 'selected' : ''; ?>>Editor</option>
+            <option value="ADMIN"  <?php echo (($usuario['rol'] ?? '')==='ADMIN') ? 'selected' : ''; ?>>Administrador</option>
+            <option value="GUEST"  <?php echo (($usuario['rol'] ?? '')==='GUEST') ? 'selected' : ''; ?>>Invitado</option>
+            <option value="EDITOR" <?php echo (($usuario['rol'] ?? '')==='EDITOR') ? 'selected' : ''; ?>>Editor</option>
         </select>
 
         <input type="submit" name="actualizar" value="Actualizar">

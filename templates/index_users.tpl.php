@@ -32,6 +32,7 @@
         <?php endforeach; ?>   
     </table>
     <p><a href="./create_user.php">NUEVO USUARIO</a></p>
+    <p><form action="./LOGOUT.php"><button type="submit">Log Out</button></form></p>
 
 </body>
 </html>

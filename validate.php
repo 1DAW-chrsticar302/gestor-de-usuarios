@@ -29,7 +29,7 @@
         $id = $valor['id'];
         $rol = $valor['rol'];
     }
-
+    
     unset($_SESSION['user']);
     $_SESSION['id'] = $id;
     $_SESSION['rol'] = $rol;

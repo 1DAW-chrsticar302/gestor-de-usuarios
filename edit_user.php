@@ -1,7 +1,7 @@
 <?php
 include_once('./libraries/functions.php');
 boot();
-
+session_start();
 $servername = 'localhost';
 $dbname = 'usuariosdb';
 $dbuser = 'usuario';
@@ -15,9 +15,8 @@ try {
 }
 
 // Obtener ID desde GET o desde POST oculto (por si el action pierde el id)
-$id = filter_input(INPUT_GET,'id',)
+$id = filter_input(INPUT_GET,'id',FILTER_VALIDATE_INT);
 
-echo '<pre>'.$id.'</pre>';
 
 if (!isset($id)) {
     // header("Location: ./index_user.php");
@@ -100,6 +99,12 @@ if (isset($_POST['actualizar'])) {
                         'rol' => $userData['rol'],
                         'id' => $id
                     ];
+                    
+                    if($userData['id'] == $_SESSION['id']) {
+                        unset($_SESSION['rol']);
+                        $_SESSION['rol'] = $userData['rol'];
+                    }
+
                     header("Location: index_user.php");
                     exit();
                 } else {

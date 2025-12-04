@@ -28,6 +28,7 @@
                 <td><?php echo htmlspecialchars(ucfirst($usuario['rol'])); ?></td>
                 <td><?php echo '<form action="./show_user.php" method="get"><button>INFO</button><input type="hidden" name="id" value="'.htmlspecialchars($usuario['id']).'"></form>'; ?></td>
                 <td><?php echo '<form action="./edit_user.php" method="get"><button>EDIT</button><input type="hidden" name="id" value="'.htmlspecialchars($usuario['id']).'"></form>'; ?></td>
+                <td><?php echo '<form action="./delete_user.php" method="get"><button>DEL</button><input type="hidden" name="id" value="'.htmlspecialchars($usuario['id']).'"></form>'; ?></td>
             </tr>
         <?php elseif($_SESSION['id'] != $usuario['id']): ?>
             <tr>
@@ -36,10 +37,12 @@
                 <td><?php echo htmlspecialchars(ucfirst($usuario['rol'])); ?></td>
                 <td><?php echo '<form action="./show_user.php" method="get"><button>INFO</button><input type="hidden" name="id" value="'.htmlspecialchars($usuario['id']).'"></form>'; ?></td>
                 <td></td>
+                <td></td>
             </tr>
         <?php endif; ?>
         <?php endforeach; ?>   
     </table>
+    <p><form action="./LOGOUT.php"><button type="submit">Log Out</button></form></p>
 
 </body>
 </html>
