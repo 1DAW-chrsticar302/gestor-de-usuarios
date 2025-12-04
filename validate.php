@@ -12,18 +12,32 @@
     }catch (PDOException $e){
         echo "No se ha podido conectar a la base de datos";
     }
+    // LA CONTRASEÑA ES pacopepe
+    $email = $_SESSION['user']['email'];
+    $passwd = $_SESSION['user']['password'];
+    
+    $email = $db -> prepare('SELECT * FROM users WHERE email = "'.$email.'"');
+    $email -> execute();
 
-
-    $validacion = $db -> prepare('SELECT * FROM users WHERE email = "'.$_SESSION['user']['email'].'" AND password = "'.$_SESSION['user']['password'].'"');
-    $validacion -> execute();
-
-    foreach($validacion as $valor) {
-        echo var_dump($valor);
+    foreach($email as $valor) {
         if($valor != null) {
-            $id = $valor['id'];
-            $rol = $valor['rol'];
+            $hashed_passwd = $valor['password'];
         }
+    } 
+
+    if(password_verify($passwd, $hashed_passwd)) {
+        $id = $valor['id'];
+        $rol = $valor['rol'];
     }
 
-    unset
+    unset($_SESSION['user']);
+    $_SESSION['id'] = $id;
+    $_SESSION['rol'] = $rol;
+    
+
+    if(isset($_SESSION['id']) && isset($_SESSION['rol'])) {
+        header('Location: index_user.php');
+    }else {
+        echo 'ERROR EN REDIRECCIÓN';
+    }
 ?>

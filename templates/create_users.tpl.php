@@ -19,9 +19,9 @@
         <input type="submit" value="Crear" name="crear">
         <label for="rol">Rol: </label>
         <select id="rol" name="rol">
-            <option selected value="admin">Administrador</option>
-            <option value="guest">Invitado</option>
-            <option value="editor">Editor</option>
+            <option selected value="ADMIN">Administrador</option>
+            <option value="GUEST">Invitado</option>
+            <option value="EDITOR">Editor</option>
         </select> 
     </form>
     <p><a href="./index_user.php">Volver a listado usuarios</a></p>

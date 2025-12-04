@@ -20,16 +20,26 @@
             <th>EDITAR</th>
             <th>ELIMINAR</th> -->
         </tr>
-        <?php foreach($usuarios as  $usuario): ?>  
-        <tr>
-            <td><?php echo htmlspecialchars($usuario['nombre']); ?></td>
-            <td><?php echo htmlspecialchars($usuario['email']); ?></td>
-            <td><?php echo htmlspecialchars(ucfirst($usuario['rol'])); ?></td>
-            <td><?php echo '<form action="./show_user.php" method="get"><button>INFO</button><input type="hidden" name="id" value="'.htmlspecialchars($usuario['id']).'"></form>'; ?></td>
-        </tr>
+        <?php foreach($usuarios as  $usuario):
+            if($_SESSION['id'] == $usuario['id']): ?>  
+            <tr>
+                <td><?php echo htmlspecialchars($usuario['nombre']); ?></td>
+                <td><?php echo htmlspecialchars($usuario['email']); ?></td>
+                <td><?php echo htmlspecialchars(ucfirst($usuario['rol'])); ?></td>
+                <td><?php echo '<form action="./show_user.php" method="get"><button>INFO</button><input type="hidden" name="id" value="'.htmlspecialchars($usuario['id']).'"></form>'; ?></td>
+                <td><?php echo '<form action="./edit_user.php" method="get"><button>EDIT</button><input type="hidden" name="id" value="'.htmlspecialchars($usuario['id']).'"></form>'; ?></td>
+            </tr>
+        <?php elseif($_SESSION['id'] != $usuario['id']): ?>
+            <tr>
+                <td><?php echo htmlspecialchars($usuario['nombre']); ?></td>
+                <td><?php echo htmlspecialchars($usuario['email']); ?></td>
+                <td><?php echo htmlspecialchars(ucfirst($usuario['rol'])); ?></td>
+                <td><?php echo '<form action="./show_user.php" method="get"><button>INFO</button><input type="hidden" name="id" value="'.htmlspecialchars($usuario['id']).'"></form>'; ?></td>
+                <td></td>
+            </tr>
+        <?php endif; ?>
         <?php endforeach; ?>   
     </table>
-    <p><a href="./create_user.php">NUEVO USUARIO</a></p>
 
 </body>
 </html>

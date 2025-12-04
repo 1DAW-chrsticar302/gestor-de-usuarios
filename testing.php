@@ -13,5 +13,5 @@ if (!isset($_COOKIE['visitas'])) {
     setcookie('visitas',$visitas+1);
 }
 echo 'Hay '. $_COOKIE['visitas'] . ' visitas en esta página';
-
+echo password_hash('pacopepe', PASSWORD_DEFAULT)
 ?>  

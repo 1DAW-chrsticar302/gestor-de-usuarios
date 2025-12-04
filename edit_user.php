@@ -15,13 +15,12 @@ try {
 }
 
 // Obtener ID desde GET o desde POST oculto (por si el action pierde el id)
-$id = filter_input(INPUT_GET, 'id', FILTER_VALIDATE_INT);
-if (!$id) {
-    $id = filter_input(INPUT_POST, 'id', FILTER_VALIDATE_INT);
-}
+$id = filter_input(INPUT_GET,'id',)
 
-if (!$id) {
-    header("Location: ./index_user.php");
+echo '<pre>'.$id.'</pre>';
+
+if (!isset($id)) {
+    // header("Location: ./index_user.php");
     exit;
 }
 
