@@ -1,0 +1,13 @@
+$usuario = $stmt->fetch(PDO::FETCH_ASSOC);
+
+esto devuelve un array asociativo con el valor el statement.
+
+Ejemplo de select/update con bindvalue:
+
+$stmt = $db -> prepare("SELECT * FROM usuarios WHERE id = :id");
+$stmt -> bindValue(':id',$id,PDO::PARAM_INT);           //Reemplaza :id por $id en la orden sql
+$stmt -> execute();
+$usuario = $stmt -> fetch(PDO::FETCH_ASSOC)             //Devuelve el array asociativo de la orden ejecutada.
+
+
+$update = $db -> prepare("UPDATE users SET )
